@@ -1,0 +1,13 @@
+User-Agent: *
+Allow: /sitemap.xml
+Allow: /
+Disallow: /admin
+Disallow: /cgi-bin/
+Disallow: /config
+Disallow: /test/
+Disallow: /pagina/
+Disallow: /pesquisa/
+Disallow: /functions/
+
+
+Sitemap: http://animetoys.com.br/sitemap.xml
