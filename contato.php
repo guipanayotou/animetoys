@@ -10,13 +10,8 @@ ob_start();
 
 $pag = new pagina();
 
-$pag->setid(1);
+$pag->setid(4);
 $pag-> select();
-
-
-
-
-
 
 
 //metastags 

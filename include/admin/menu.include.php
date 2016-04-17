@@ -3,10 +3,8 @@
 </div>
 <nav id="nav-main">
     <ul>
-        <li><a href="./">Início</a></li>
-        <li><a href="./sobre">Sobre</a></li>
-        <li><a href="./produtos">Produtos</a></li>
-        <li><a href="./contato">Contato</a></li>
+        <li><a href="./" target="_blank">Ver site</a></li>
+        <li><a href="./editar-paginas">Editar Páginas</a></li>
     </ul>
 </nav>
 <nav id="nav-mobile"></nav>

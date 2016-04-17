@@ -10,7 +10,7 @@ ob_start();
 
 $pag = new pagina();
 
-$pag->setid(1);
+$pag->setid(3);
 $pag-> select();
 
 
