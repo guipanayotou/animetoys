@@ -296,6 +296,10 @@ footer p{
     footer p{
         width: 90%;
     }
+    
+    .form-login{
+        width: 100% !important;
+    }
 
 
 }
@@ -326,7 +330,7 @@ button{
     border: 1px solid #ddd;
     padding: 10px;
     font-size: 20px;
-    background-color: #0066cc;
+    background-color: #1392e9;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -335,4 +339,16 @@ button{
 button:hover{
 
      background-color: #0782C1;
+}
+.form-login{
+    padding: 30px;
+    margin: 10px auto;
+    min-height: 50%;
+    background-color: #ccc;
+    width: 50%;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+.form-login input{
+    background-color: white;
 }

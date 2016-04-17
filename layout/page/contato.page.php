@@ -2,6 +2,12 @@
 <section>
     <h1><i class="fa fa-comments-o color"></i> <?php echo $pag->getTitulo(); ?></h1>
     <br />
+    <div>
+        <form method="post">
+            <input type="text" />
+            
+        </form>
+    </div>
     <?php echo $pag->getTexto(); ?>
     <h2><i class="fa fa-map-o color"></i> Nosso Endereço</h2>
     <span class="bb2"></span>
