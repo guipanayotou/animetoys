@@ -2,6 +2,14 @@
 <noscript>Ops, esse site não funcionará corretamente no seu navegador pois ele não dá suporte ao JavaScript :/</noscript>
 <script src="./layout/js/jquery-1.12.3.min.js"></script>
 
+<link rel="stylesheet" href="./layout/css/font-awesome.min.css">
+
+<script src="./layout/js/menu.js"></script>
+
+<script src="./layout/js/modernizr.custom.js"></script>
+
+
+
 <title><?php echo $title; ?></title>
 <meta name="Description" content="<?php echo $description ?>" />
 <meta name="Keywords" content="<?php echo $keywords; ?>" />

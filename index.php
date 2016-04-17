@@ -8,8 +8,13 @@ include_once './include/session.include.php';
 // start do buffer
 ob_start();
 
+$pag = new pagina();
+
+$pag->setid(1);
+$pag-> select();
+
 //metastags 
-$title = 'titulo da pagina';
+$title = 'Anime Toys Sorocaba';
 $description = 'descricao';
 $keywords = 'palavras chave';
 

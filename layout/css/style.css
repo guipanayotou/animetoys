@@ -1,10 +1,253 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 07/04/2016, 23:45:42
-    Author     : Guilherme Martins
-*/
+/* menu principal responsivo
+-------------------------------------------------------------- */
+#nav-trigger {
+    display: none;
+    text-align: center; }
+#nav-trigger span {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #111;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase; }
+#nav-trigger span:after {
+    display: inline-block;
+    margin-left: 10px;
+    width: 20px;
+    height: 10px;
+    content: "";
+    border-left: solid 10px transparent;
+    border-top: solid 10px #fff;
+    border-right: solid 10px transparent; }
+#nav-trigger span:hover {
+    background-color: #af002c; }
+#nav-trigger span.open:after {
+    border-left: solid 10px transparent;
+    border-top: none;
+    border-bottom: solid 10px #fff;
+    border-right: solid 10px transparent; }
 
+nav {
+    margin-bottom: 30px; 
+}
+
+nav#nav-main {
+    background-color: #111;
+    padding: 10px 0; }
+nav#nav-main ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; }
+nav#nav-main li {
+    display: inline-block;
+    border-right: solid 1px white;
+    padding: 0 5px; }
+nav#nav-main li:last-child {
+    border-right: none; }
+nav#nav-main a {
+    display: block;
+    color: white;
+    padding: 10px 30px; }
+nav#nav-main a:hover {
+    background-color: #af002c;
+    color: #fff; }
+
+nav#nav-mobile {
+    position: relative;
+    display: none; }
+nav#nav-mobile ul {
+    display: none;
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #111; }
+nav#nav-mobile li {
+    display: block;
+    padding: 5px 0;
+    margin: 0 5px;
+    border-bottom: solid 1px white }
+nav#nav-mobile li:last-child {
+    border-bottom: none; }
+nav#nav-mobile a {
+    display: block;
+    color: white;
+    padding: 10px 30px; }
+nav#nav-mobile a:hover {
+    background-color: #af002c;
+    color: #fff; }
+
+@media all and (max-width: 900px) {
+    #nav-trigger {
+        display: block; }
+
+    nav#nav-main {
+        display: none; }
+
+    nav#nav-mobile {
+        display: block; } }
+
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+/* CSS que se aplica a toda a página web
+-------------------------------------------------------------- */
+* {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0; }
+
+ol, ul {
+    list-style: none; }
+
+body {
+    background-color: #c80032;
+    color: #505050;
+    font-family:  sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.8; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300; }
+
+a {
+    text-decoration: none;
+    color: #c80032; }
+
+a:hover {
+    color: #7c001f; }
+
+#main {
+    background-color: #fff;
+    min-height: 500px;
+    padding: 0px 0 30px 0; }
+
+/* Faixinha na parte de cima  = top-bar
+-------------------------------------------------------------- */
+
+#top-bar {
+    background-color: #950025; }
+
+#top-bar a {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+    padding: 10px; }
+
+#top-bar a:hover {
+    background-color: #7c001f; }
+
+span.bar-esq,
+span.bar-dir {
+    display: block;
+    width: 50%; }
+
+span.bar-esq {
+    float: left;
+    text-align: left; }
+
+span.bar-dir {
+    float: right;
+    text-align: right; }
+
+/* Header
+-------------------------------------------------------------- */
+header {
+    padding: 30px 0; }
+
+#title {
+    text-align: center; }
+
+#title h1 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 10px; }
+
+#title h2 {
+    color: #ff4976;
+    font-size: 20px; }
+
+/* Footer
+-------------------------------------------------------------- */
+footer{
+    color: #333;
+    background-color: white;
+}
+footer p{
+    padding: 3px;
+    border-top: #aaa 1px solid; 
+    margin: 0px auto;
+    text-align: center;
+    width: 50%;
+}
+
+
+/* Helpers 
+-------------------------------------------------------------- */
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0; }
+
+.text-center{
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 30px; }
+
+.color{
+    color: #ff4976;
+}
+
+/* Media Queries
+-------------------------------------------------------------- */
+@media all and (max-width: 767px) {
+    .container {
+        width: 100%; }
+
+    #top-bar a {
+        display: none !important; }
+
+    span.bar-esq,
+    span.bar-dir {
+        width: 100%; }
+
+    span.bar-esq,
+    span.bar-dir {
+        float: none;
+        text-align: center; }
+
+    span.bar-esq {
+        border-bottom: solid 1px #7c001f; }
+
+    #title h1 {
+        font-size: 20px; }
+
+    #title h2 {
+        font-size: 16px; } 
+
+    footer p{
+    width: 90%;
+}
+
+}
