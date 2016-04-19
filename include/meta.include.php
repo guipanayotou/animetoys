@@ -47,6 +47,6 @@
 <meta name="company" content="Anime Toys"/>
 <meta name="rating" content="general"/>
 <meta name="audience" content="all"/>
-<link rel="canonical" href="http://animetoys.com.br<?php if (_URI_ != '/') echo "/".str_replace ("/", "", _URI_); ?>" />
+<link rel="canonical" href="http://animetoys.com.br<?php if (_URI_ != '/') echo "/" . str_replace("/", "", _URI_); ?>" />
 <meta http-equiv="Cache-control" content="no-cache" />
 

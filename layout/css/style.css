@@ -206,7 +206,7 @@ header {
 
 #title h1 {
     color: #fff;
-  
+
     margin-bottom: 10px; }
 
 #title h2 {
@@ -267,6 +267,37 @@ footer p{
     margin-bottom: 30px;
 }
 
+.fr{
+    float: right;
+}
+
+.fl{
+    float: left;
+}
+
+
+/** Tables 
+--------------------------------------------------------- */ 
+table{
+    border-collapse: collapse;
+
+    width: 100%;
+}
+tr:nth-child(even){
+    background: #ddd;  
+}
+
+th{
+    background-color: #ff4976;
+    color: white;
+}
+
+th, td{
+    padding: 3px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
 /* Media Queries
 -------------------------------------------------------------- */
 @media all and (max-width: 767px) {
@@ -288,7 +319,7 @@ footer p{
     span.bar-esq {
         border-bottom: solid 1px #7c001f; }
 
-   
+
 
     #title h2 {
         font-size: 16px; } 
@@ -296,14 +327,32 @@ footer p{
     footer p{
         width: 90%;
     }
-    
+
     .form-login{
         width: 100% !important;
     }
+    input, textarea, select{
+        width: 90% !important;
 
+    }
+    input:focus, textarea:focus, select:focus{
+        width: 100% !important;
+        padding: 5px !important;
+    }
+
+    .coluna2{
+        width: 100% !important;
+
+    }
 
 }
-input{
+@media all and (min-width: 767px){
+    textarea{
+        min-width: 400px;
+    }
+}
+
+input, textarea, select{
     width: 50%;
     border:  1px solid #bbb;
     border-radius: 3px;
@@ -313,8 +362,9 @@ input{
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    font-size: 100% !important;
 }
-input:focus{
+input:focus, textarea:focus, select:focus{
     width: 60%;
     padding: 10px;
     -webkit-transition: all 0.5s ease;
@@ -338,7 +388,7 @@ button{
 }
 button:hover{
 
-     background-color: #0782C1;
+    background-color: #0782C1;
 }
 .form-login{
     padding: 30px;
@@ -352,3 +402,16 @@ button:hover{
 .form-login input{
     background-color: white;
 }
+
+.coluna2{
+
+    width: 49%;
+}
+.coluna2 input{
+    width: 80%;
+}
+
+.coluna2 input:focus{
+    width: 100%;
+}
+

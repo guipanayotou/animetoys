@@ -1,138 +1,124 @@
-<?php 
- /*
-*Classe categoria
-*/
+<?php
 
-include_once 'bd/banco.class.php'; 
+/*
+ * Classe categoria
+ */
 
-class categoria{
+include_once 'bd/banco.class.php';
 
-	private $id;
-	private $nome;
-	private $descricao;
+class categoria {
 
-	public function __construct($id='')
-	{
-		$this->id = $id;
-	}
+    private $id;
+    private $nome;
+    private $descricao;
 
-	public function select()
-	{
+    public function __construct($id = '') {
+        $this->id = $id;
+    }
 
-		$link = banco::con();
-		$this->id = mysqli_real_escape_string($link, $this->id);
+    public function select() {
 
-		$query = "SELECT * FROM categoria WHERE `id`='{$this->id}'";
-		$result = mysqli_query($link, $query);
+        $link = banco::con();
+        $this->id = mysqli_real_escape_string($link, $this->id);
 
-		if(mysqli_num_rows($result) > 0) {
-			while($row = mysqli_fetch_assoc($result) ){
-				foreach($row as $key => $value)
-				{
-					$column_name = str_replace('-','_',$key);
-					$this->$column_name = $value;
+        $query = "SELECT * FROM categoria WHERE `id`='{$this->id}'";
+        $result = mysqli_query($link, $query);
 
-				}
-			}
-			return true;
-		}
-		return false;
-	}
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                foreach ($row as $key => $value) {
+                    $column_name = str_replace('-', '_', $key);
+                    $this->$column_name = $value;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
-	public function selectAll()
-	{
-		$link = banco::con();
-		$list = array();
-		$query = "SELECT * FROM categoria";
+    public function selectAll() {
+        $link = banco::con();
+        $list = array();
+        $query = "SELECT * FROM categoria";
 
-		$result = mysqli_query($link, $query);
+        $result = mysqli_query($link, $query);
 
-		while($row = mysqli_fetch_assoc($result) ){
-		$item = new categoria();
-			foreach($row as $key => $value)
-			{
-				$column_name = str_replace('-','_',$key);
-				$item->$column_name = $value;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $item = new categoria();
+            foreach ($row as $key => $value) {
+                $column_name = str_replace('-', '_', $key);
+                $item->$column_name = $value;
+            }
+            $list[] = $item;
+        }
+        return $list;
+    }
 
-			}
-		$list[] = $item;
-		}
-		return $list;
-	}
-
-	public function update()
-	{
+    public function update() {
 
 
-		$link = banco::con();
-		$this->nome = mysqli_real_escape_string($link, $this->nome);
-		$this->descricao = mysqli_real_escape_string($link, $this->descricao);
-		$query = "UPDATE categoria SET 
+        $link = banco::con();
+        $this->nome = mysqli_real_escape_string($link, $this->nome);
+        $this->descricao = mysqli_real_escape_string($link, $this->descricao);
+        $query = "UPDATE categoria SET 
 						`nome` = '$this->nome',
 						`descricao` = '$this->descricao' 
 						WHERE `id`='$this->id'";
 
-		mysqli_query($link, $query);
+        mysqli_query($link, $query);
 
-		return mysqli_affected_rows($link);
-	}
+        return mysqli_affected_rows($link);
+    }
 
-	public function delete()
-	{
+    public function delete() {
+        
+        $link = banco::con();
+        $this->id = mysqli_real_escape_string($link, $this->id);
 
-		$this->id = mysqli_real_escape_string($this->id);
+        $query = "DELETE FROM categoria WHERE `id`='$this->id'";
+        mysqli_query($link, $query);
 
-		$link = banco::con();
-		$query = "DELETE FROM categoria WHERE `id`='$this->id'";
-		mysqli_query($link, $query);
+        return mysqli_affected_rows($link);
+    }
 
-		return mysqli_affected_rows($link);
-	}
-
-	public function insert()
-	{
+    public function insert() {
 
 
-		$link = banco::con();
-		$this->nome = mysqli_real_escape_string($link, $this->nome);
-		$this->descricao = mysqli_real_escape_string($link, $this->descricao);
-		$query ="INSERT INTO categoria (`nome`,`descricao`) VALUES ('$this->nome','$this->descricao');";
-		mysqli_query($link, $query);
-		$this->id = mysqli_insert_id($link);
-	}
+        $link = banco::con();
+        $this->nome = mysqli_real_escape_string($link, $this->nome);
+        $this->descricao = mysqli_real_escape_string($link, $this->descricao);
+        $query = "INSERT INTO categoria (`nome`,`descricao`) VALUES ('$this->nome','$this->descricao');";
+        mysqli_query($link, $query);
+        $this->id = mysqli_insert_id($link);
+    }
 
-	public function setId($id='')
-	{
-		$this->id = $id;
-		return true;
-	}
+    public function setId($id = '') {
+        $this->id = $id;
+        return true;
+    }
 
-	public function getId()
-	{
-		return $this->id;
-	}
+    public function getId() {
+        return $this->id;
+    }
 
-	public function setNome($nome='')
-	{
-		$this->nome = $nome;
-		return true;
-	}
+    public function setNome($nome = '') {
+        $this->nome = $nome;
+        return true;
+    }
 
-	public function getNome()
-	{
-		return $this->nome;
-	}
+    public function getNome() {
+        return $this->nome;
+    }
 
-	public function setDescricao($descricao='')
-	{
-		$this->descricao = $descricao;
-		return true;
-	}
+    public function setDescricao($descricao = '') {
+        $this->descricao = $descricao;
+        return true;
+    }
 
-	public function getDescricao()
-	{
-		return $this->descricao;
-	}
+    public function getDescricao() {
+        return $this->descricao;
+    }
 
 }
- ?>
+
+?>

@@ -10,7 +10,7 @@
 
         <div id="main">
             <!-- Inclui o menu principal -->
-            
+
             <div class="container text-center">
                 <h1><i class="fa fa-sign-in color"></i> Login Sistema Administrativo</h1>
                 <form method="post" class="form-login">
@@ -18,10 +18,11 @@
                     <input type="text" name="usuario" autofocus required placeholder="Digite o seu usuário" /><br /><br />
                     <label for="senha">Senha: </label><br />
                     <input type="password" name="senha" required placeholder="Digite sua senha" /><br /><br />
-                    <button type="submit" name="submit"><i class="fa fa-sign-out"></i> Logar</button>
-                    <?php if(isset($_GET['erro'])): ?>
-                    <br /><br />
-                    <p class=""><?php echo $_GET['erro']; ?></p>
+
+                    <button type="submit" name="submit"><i class="fa fa-paper-plane-o"></i> Logar</button>
+                    <?php if (isset($_GET['erro'])): ?>
+                        <br /><br />
+                        <p class="color">Ops, usuário ou senha incorretos, tente novamente.</p>
                     <?php endif; ?>
                 </form>
                 <!-- mostra o corpo do texto -->

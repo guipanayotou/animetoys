@@ -1,4 +1,5 @@
 <?php
+
 // define o tipo de codificação da página
 header('Content-Type: text/html; charset=utf-8');
 //includes necessarios em todas as paginas 
@@ -11,7 +12,7 @@ ob_start();
 $pag = new pagina();
 
 $pag->setid(4);
-$pag-> select();
+$pag->select();
 
 
 //metastags 

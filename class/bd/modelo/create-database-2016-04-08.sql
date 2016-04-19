@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `widet532_animetoys` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `widet532_animetoys`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: widet532_animetoys
@@ -23,7 +25,7 @@ DROP TABLE IF EXISTS `categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categoria` (
-  `id` tinyint(4) NOT NULL,
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -82,7 +84,7 @@ CREATE TABLE `fornecedor` (
   `descricao` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +93,7 @@ CREATE TABLE `fornecedor` (
 
 LOCK TABLES `fornecedor` WRITE;
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
+INSERT INTO `fornecedor` VALUES (2,'fornecedor ','12312312','','<p>ewqeqweqweqw</p>\r\n',''),(4,'dsadas','','','',''),(5,'dasdasdsadsa','','','','');
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +111,7 @@ CREATE TABLE `pagina` (
   `imagem` varchar(255) DEFAULT NULL,
   `mais` mediumtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +120,7 @@ CREATE TABLE `pagina` (
 
 LOCK TABLES `pagina` WRITE;
 /*!40000 ALTER TABLE `pagina` DISABLE KEYS */;
+INSERT INTO `pagina` VALUES (1,'PÃ¡gina inicial','<p>pronto, modifiquei</p>\r\n','','<p>aqui voce encontra muitas novidades!</p>\r\n'),(2,'PÃ¡gina Sobre','<p><span style=\"font-family:comic sans ms,cursive\"><span style=\"font-size:14px\"><span style=\"color:rgb(165, 42, 42)\">Ol&aacute; somos a empresa mais legal do mundo</span></span></span></p>\r\n','',''),(3,'Produtos','',NULL,NULL),(4,'Contato','',NULL,NULL);
 /*!40000 ALTER TABLE `pagina` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,9 +145,7 @@ CREATE TABLE `produto` (
   `img3` varchar(255) DEFAULT NULL,
   `img4` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_produto_categoria_idx` (`idcategoria`),
   KEY `fk_produto_fornecedor_idx` (`idfornecedor`),
-  CONSTRAINT `fk_produto_categoria` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_produto_fornecedor` FOREIGN KEY (`idfornecedor`) REFERENCES `fornecedor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -173,8 +175,9 @@ CREATE TABLE `usuario` (
   `telefone` varchar(255) DEFAULT NULL,
   `tipo` tinyint(4) NOT NULL,
   `descontomaximo` decimal(10,0) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,6 +186,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'admin','d033e22ae348aeb5660fc2140aec35850c4da997','Admin','admin@admin.com','15992837463',1,100),(2,'vendedor','7110eda4d09e062aa5e4a390b0a572ac0d2c0220','Vendedor','email@vendedor.com','',4,12),(3,'gustavo','7110eda4d09e062aa5e4a390b0a572ac0d2c0220','Gustavo Martins','','',3,0),(4,'bloqueado','7110eda4d09e062aa5e4a390b0a572ac0d2c0220','bloqueado','','',4,0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-08  0:12:53
+-- Dump completed on 2016-04-19 18:56:46

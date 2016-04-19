@@ -5,6 +5,8 @@ header('Content-Type: text/html; charset=utf-8');
 //includes necessarios em todas as paginas 
 include './include/autoload.include.php';
 include_once './include/session.include.php';
+//verifica se o usuario está logado 
+include './include/admin/user-control.include.php';
 
 // start do buffer
 ob_start();
