@@ -11,8 +11,8 @@ include_once './include/admin/user-control.include.php';
 
 // start do buffer
 ob_start();
-$categoria = new categoria();
-$categorias = $categoria->selectAll();
+$venda = new venda();
+$vendas = $venda->selectAll();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -20,36 +20,91 @@ if (isset($_GET['id'])) {
     $id = NULL;
 }
 
-$cat = new categoria($id);
-$cat->select();
+$vend = new venda($id);
+$vend->select();
 
 if (isset($_POST['submit'])) {
-    if ($_POST['nome'] != '') {
-        $cat->setNome($_POST['nome']);
-        $cat->setDescricao($_POST['descricao']);
+    if ($_POST['idproduto'] != '' && $_POST['quantidade'] > 0 && $_POST['desconto'] >= 0) {
 
-        if (isset($_GET['id']))
-            $cat->update();
+        // seleciona o vendedor
+        $vend->setIdusuario($_POST['idusuario']);
+
+        //trata o desconto
+        if ($_POST['desconto'] > 0) {
+            $usuario = new usuario($_POST['idusuario']);
+            $usuario->select();
+            
+            if ($_POST['desconto'] <= $usuario->getDescontomaximo())
+                $vend->setDesconto($_POST['desconto']);
+            
+            else {
+                header("Location: ./venda?erro=1");
+                exit();
+            }
+        }
+
+        // trata os produtos em estoque
+        $produto = new produto($_POST['idproduto']);
+        $produto->select();
+        
+        if ($produto->getEstoque() < $_POST['quantidade']) {
+            header("Location: ./venda?erro=2&p=" . $_POST['idproduto']);
+            exit();
+        }
+
+        $vend->setData(date("Y-m-d H:i:s"));
+
+        // trata o cliente
+        $cli = new cliente();
+        
+        if ($_POST['email'] != '') {
+            $cli->setEmail($_POST['email']);
+            $cli->selectByEmail();
+            
+            if ($cli->getId() != '') {
+                $vend->setIdcliente($cli->getId());
+                
+            } else {
+                header("Location: ./venda?erro=3");
+                exit();
+            }
+        }
+
+        // trata os pontos
+        if ($_POST['pontos'] > 0) {
+            if ($cli->getId() != '') {
+                $cli->setPontos($cli->getPontos() + $_POST['pontos']);
+                $cli->update();
+                
+            } else {
+                header("Location: ./venda?erro=4");
+                exit();
+            }
+        }
+
+        if (isset($_GET['id']) && ($logado->getTipo() == 1 || $logado->getTipo() == 2))
+            $vend->update();
         else
-            $cat->insert();
+            for ($i = 0; $i < $_POST['quantidade']; $i++)
+                $vend->insert();
 
-        header("Location: ./categoria");
+        header("Location: ./venda");
         exit();
     }
 }
 
-if (isset($_GET['excluir'])) {
-    $exc = new categoria($_GET['excluir']);
+if (isset($_GET['excluir']) && ($logado->getTipo() == 1 || $logado->getTipo() == 2)) {
+    $exc = new venda($_GET['excluir']);
     $exc->delete();
 
-    header("Location: ./categoria");
+    header("Location: ./venda");
     exit();
 }
 
 //metastags 
-$title = 'Categorias | Sistema administrativo';
+$title = 'Vendas | Sistema administrativo';
 // incluindo a pagina que eu quero 
-include './layout/page/admin/categoria.page.php';
+include './layout/page/admin/venda.page.php';
 
 // termina o buffer e coloca numa variavel corpo
 $corpo = ob_get_clean();
