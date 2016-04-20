@@ -80,10 +80,8 @@ class venda {
     }
 
     public function delete() {
-
-        $this->id = mysqli_real_escape_string($this->id);
-
         $link = banco::con();
+        $this->id = mysqli_real_escape_string($link, $this->id);
         $query = "DELETE FROM venda WHERE `id`='$this->id'";
         mysqli_query($link, $query);
 

@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 
         if ($usuario->getId() != '') {
             $_SESSION['usuario'] = serialize($usuario);
-            header("Location: ./usuario");
+            header("Location: ./venda");
             exit();
         } else {
             header("Location: ./login?erro=1");

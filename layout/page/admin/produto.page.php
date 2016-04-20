@@ -1,6 +1,6 @@
 <div style="width: 100%; padding: 10px 0px;">
     <div>
-        <h1><i class="fa fa-th-list color"></i> Produtos</h1>
+        <h1><i class="fa fa-shopping-basket color"></i> Produtos</h1>
         <hr />
 
         <h2><?php
@@ -70,6 +70,7 @@
                     <th>Preço</th>
                     <th>Estoque</th>
                     <th>Descrição</th>
+                    <th>Disponibilidade</th>
                     <th>Editar</th> 
                     <th>Excluir</th>
                 </tr>
