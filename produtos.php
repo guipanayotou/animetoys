@@ -8,6 +8,11 @@ include_once './include/session.include.php';
 
 // start do buffer
 ob_start();
+$produto = new produto();
+$produtos = $produto->selectAllAtivos();
+
+$categoria = new categoria();
+$categorias = $categoria->selectAll();
 
 $pag = new pagina();
 

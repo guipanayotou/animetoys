@@ -25,7 +25,7 @@ class cliente {
         $link = banco::con();
         $this->email = mysqli_real_escape_string($link, $this->email);
 
-        $query = "SELECT nome, pontos FROM cliente WHERE email = '{$this->email}'; ";
+        $query = "SELECT * FROM cliente WHERE email = '{$this->email}'; ";
         $result = mysqli_query($link, $query);
 
         if (mysqli_num_rows($result) > 0) {
@@ -104,7 +104,7 @@ class cliente {
 
     public function delete() {
         $link = banco::con();
-        
+
         $this->id = mysqli_real_escape_string($link, $this->id);
         $query = "DELETE FROM cliente WHERE `id`='$this->id'";
         mysqli_query($link, $query);

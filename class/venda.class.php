@@ -97,9 +97,15 @@ class venda {
         $this->data = mysqli_real_escape_string($link, $this->data);
         $this->desconto = mysqli_real_escape_string($link, $this->desconto);
         $this->idusuario = mysqli_real_escape_string($link, $this->idusuario);
-        $query = "INSERT INTO venda (`idproduto`,`idcliente`,`data`,`desconto`,`idusuario`) VALUES ('$this->idproduto','$this->idcliente','$this->data','$this->desconto','$this->idusuario');";
+        
+        if ($this->idcliente != '')
+            $query = "INSERT INTO venda (`idproduto`,`idcliente`,`data`,`desconto`,`idusuario`) VALUES ('$this->idproduto','$this->idcliente','$this->data','$this->desconto','$this->idusuario');";
+        else
+            $query = "INSERT INTO venda (`idproduto`,`data`,`desconto`,`idusuario`) VALUES ('$this->idproduto','$this->data','$this->desconto','$this->idusuario');";
+
         mysqli_query($link, $query);
-        $this->id = mysqli_insert_id($link);
+        // $this->id = mysqli_insert_id($link);
+       // die($query);
     }
 
     public function setId($id = '') {

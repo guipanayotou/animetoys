@@ -62,6 +62,24 @@ class produto {
         }
         return $list;
     }
+    
+    public function selectAllAtivos() {
+        $link = banco::con();
+        $list = array();
+        $query = "SELECT * FROM produto where ativo = 1";
+
+        $result = mysqli_query($link, $query);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $item = new produto();
+            foreach ($row as $key => $value) {
+                $column_name = str_replace('-', '_', $key);
+                $item->$column_name = $value;
+            }
+            $list[] = $item;
+        }
+        return $list;
+    }
 
     public function update() {
 
