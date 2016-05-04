@@ -14,6 +14,23 @@ $pag = new pagina();
 $pag->setid(1);
 $pag->select();
 
+if (isset($_POST['submit'])) {
+    // pegar os valores do formulario, no caso o emal do cara
+    $cliente = new cliente();
+    $cliente->setEmail($_POST['email']);
+    $cliente->selectByEmail();
+    if ($cliente->getId() != '') {
+        header("Location: ./?pontos=" . $cliente->getPontos());
+        exit();
+    } else {
+        header("Location: ./?erro=1");
+        exit();
+    }
+}
+
+
+
+
 //metastags 
 $title = 'Anime Toys Sorocaba';
 $description = 'descricao';
