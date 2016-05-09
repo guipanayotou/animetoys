@@ -33,12 +33,13 @@
                     echo "<i class='fa fa-save'></i> Cadastrar ";
                 else
                     echo "<i class='fa fa-edit'></i> Editar ";
-                ?></button>
+                ?>
+            </button>
         </form>
 
     </div>
     <br />
-    <h2>Fornecedores cadastrados</h2>
+    <h2>Clientes cadastrados</h2>
     <div style="overflow-x: auto; width: 100%;">
         <table>
             <thead>

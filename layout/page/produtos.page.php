@@ -30,7 +30,7 @@
                 <p class="color">R$<?php echo $p->getPreco(); ?></p>
                 <p><?php echo $p->getDescricao(); ?></p>
             </div>
-            <img src="" alt="<?php echo $p->getNome(); ?>" class="fr" style="margin: 10px; max-width: 40%; max-height: 100%;" />
+            <img src="./layout/img/produtos/<?php echo $p->getImg1(); ?>" alt="<?php echo $p->getNome(); ?>" class="fr" style="margin: 10px; max-width: 40%; max-height: 100%;" />
             <div class="bb2"></div>
         </div>
         

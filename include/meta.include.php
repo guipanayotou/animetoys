@@ -1,6 +1,10 @@
 
 <noscript>Ops, esse site não funcionará corretamente no seu navegador pois ele não dá suporte ao JavaScript :/</noscript>
 <script src="./layout/js/jquery-1.12.3.min.js"></script>
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="layout/page/engine1/style.css" />
+<script type="text/javascript" src="layout/page/engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
 
 <link rel="stylesheet" href="./layout/css/font-awesome.min.css">
 
