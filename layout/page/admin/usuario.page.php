@@ -98,7 +98,7 @@
                             }
                             ?></td>
                         <td><?php echo $u->getDescontomaximo() . "%"; ?></td>
-                        <?php if ($logado->getTipo() == 2 && $u->getTipo() != 1): ?>
+                        <?php if (($logado->getTipo() == 2 && $u->getTipo() != 1) || $logado->getTipo()==1): ?>
                             <?php if ($logado->getTipo() == 1 || $logado->getTipo() == 2): ?>  <td><a href="./usuario?id=<?php echo $u->getId(); ?>"><i class="fa fa-edit color"></i></a></td><?php endif; ?>
                                 <?php else: ?>
                             <td></td>
