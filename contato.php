@@ -15,6 +15,41 @@ $pag->setid(4);
 $pag->select();
 
 
+if (isset($_GET['nome'])) {
+    $nome = $_GET['nome'];
+    $email = $_GET['email'];
+    $telefone = $_GET['telefone'];
+    $mensagem = $_GET['mensagem'];
+
+
+    if ($nome != '' && $email != '' && $mensagem != '') {
+        $msg = $mensagem;
+        $mensagem = 'Este formulário foi enviado no dia ' . date("d/m/Y") . ' às ' . date("H:i") . ' pelo formulário do site!'
+                . '<br /><br />'
+                . 'Enviado por: ' . $nome
+                . '<br /><br />'
+                . 'E-Mail: <a href="mailto:' . $email . '">' . $email . '</a>'
+                . '<br /><br />';
+        if ($telefone != '')
+            $mensagem .= 'Telefone: ' . $telefone . '<br /><br />';
+       
+        $mensagem .= 'Mensagem: ' . $msg
+                . '<br /><br />'
+                . '---- Fim da Mensagem! Obrigado por usar o sistema de E-Mail da Twelve Monkeys! ----'
+                . '<br /><br />';
+       @ $email = new enviaEmail('martinsgustavo275@gmail.com', 'Contato Anime Toys - ' . $nome, $mensagem, $email);
+      @  $envio = $email->enviar();
+    } else {
+        $envio = false;
+    }
+    echo $envio;
+    include './layout/page/blocos/email-enviado.msg.php';
+
+    //return;
+}//if
+
+
+
 //metastags 
 $title = 'Contato | Anime Toys Sorocaba';
 $description = 'descricao';

@@ -4,7 +4,7 @@
     <br />
     <div style="width: 100%; padding: 10px 0; ">
         <div class="coluna2 fl">
-            <form method="post">
+            <form method="GET">
                 <p>Para entrar em contato com a gente, preencha o formulário abaixo. Os campos com ( <b class="color">*</b> )
                     são de preenchimento obrigatório.</p>
                 <br />
@@ -22,16 +22,17 @@
                 <label for="mensagem"><b class="color">*</b> Mensagem: </label><br />
                 <textarea name="mensagem"  placeholder="Digite sua mensagem" required title="Digite sua mensagem"></textarea><br /><br />
                 <button type="submit" name="submit"><i class="fa fa-paper-plane-o"></i> Enviar</button>
+                <div id="msg"></div>
 
             </form>
             <br />
         </div>
         <div class="coluna2 fr">
             <h2><i class="fa fa-phone color"></i> Nosso Telefone</h2><br />
-            <p>
+          
             <h3>(15) 3346 - 6777</h3>
                 <?php echo $pag->getMais(); ?>
-            </p>
+          
             <span class="bb2"></span>
             <br />
         </div>
