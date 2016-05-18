@@ -34,7 +34,6 @@ if (isset($_POST['submit'])) {
 //        echo '<pre>';
 //        print_r($_POST);
 //        echo '</pre>';
-        
 //        echo 'Você enviou o arquivo: <strong>' . $_FILES['arquivo']['name'] . '</strong><br />';
 //            echo 'Este arquivo é do tipo: <strong > ' . $_FILES['arquivo']['type'] . ' </strong ><br />';
 //            echo 'Temporáriamente foi salvo em: <strong>' . $_FILES['arquivo']['tmp_name'] . '</strong><br />';
@@ -43,7 +42,7 @@ if (isset($_POST['submit'])) {
 //        
         // verifica se foi enviado um arquivo
         if (isset($_FILES['arquivo']['name']) && $_FILES['arquivo']['error'] == 0) {
-            
+
             $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
             $nome = $_FILES['arquivo']['name'];
 
@@ -60,21 +59,19 @@ if (isset($_POST['submit'])) {
                 // Cria um nome único para esta imagem
                 // Evita que duplique as imagens no servidor.
                 // Evita nomes com acentos, espaços e caracteres não alfanuméricos
-                $novoNome = uniqid(time()) .'.' .$extensao;
+                $novoNome = uniqid(time()) . '.' . $extensao;
 
                 // Concatena a pasta com o nome
                 $destino = './layout/img/produtos/' . $novoNome;
 
                 // tenta mover o arquivo para o destino
                 if (@move_uploaded_file($arquivo_tmp, $destino)) {
-                    echo 'Arquivo salvo com sucesso em : <strong>' . $destino . '</strong><br />';
-                    echo ' < img src = "' . $destino . '" />';
+                    
                 } else
-                    echo 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.<br />';
+                    $erro = 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.<br />';
             } else
-                echo 'Você poderá enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png"<br />';
-        } else
-            echo 'Você não enviou nenhum arquivo!';
+                $erro = 'Você poderá enviar apenas arquivos "*.jpg; *.jpeg; *.gif; *.png"<br />';
+        }
 
 
         $prod->setNome($_POST['nome']);
@@ -83,18 +80,27 @@ if (isset($_POST['submit'])) {
         $prod->setIdcategoria($_POST['idcategoria']);
         $prod->setEstoque($_POST['estoque']);
         $prod->setIdfornecedor($_POST['idfornecedor']);
+        $prod->setPontos($_POST['pontos']);
         $prod->setAtivo($_POST['ativo']);
-        if (isset($novoNome) && $novoNome != '')
+        if (isset($novoNome))
             $prod->setImg1($novoNome);
 
-       // exit();     
-        if (isset($_GET['id']))
-            $prod->update();
-        else
-            $prod->insert();
+        // exit();     
 
-        header("Location: ./produto");
-        exit();
+
+        if (isset($erro) && $erro != '') {
+            header("Location: ./produto?erro=" . $erro);
+            exit();
+        } else {
+
+            if (isset($_GET['id']))
+                $prod->update();
+            else
+                $prod->insert();
+
+            header("Location: ./produto");
+            exit();
+        }
     }
 }
 

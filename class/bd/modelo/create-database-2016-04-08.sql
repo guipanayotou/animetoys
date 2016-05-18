@@ -141,12 +141,14 @@ CREATE TABLE `produto` (
   `preco` float DEFAULT NULL,
   `idcategoria` tinyint(4) DEFAULT NULL,
   `estoque` int(11) DEFAULT NULL,
+  `pontos` int(11) DEFAULT NULL,
   `idfornecedor` int(11) DEFAULT '1',
   `ativo` tinyint(4) NOT NULL,
   `img1` varchar(255) DEFAULT NULL,
   `img2` varchar(255) DEFAULT NULL,
   `img3` varchar(255) DEFAULT NULL,
   `img4` varchar(255) DEFAULT NULL,
+  
   PRIMARY KEY (`id`),
   KEY `fk_produto_fornecedor_idx` (`idfornecedor`),
   CONSTRAINT `fk_produto_fornecedor` FOREIGN KEY (`idfornecedor`) REFERENCES `fornecedor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION

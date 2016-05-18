@@ -27,8 +27,9 @@
             <br />
         </div>
         <div class="coluna2 fr">
-            <h2><i class="fa fa-phone color"></i> Nosso Telefone</h2>
+            <h2><i class="fa fa-phone color"></i> Nosso Telefone</h2><br />
             <p>
+            <h3>(15) 3346 - 6777</h3>
                 <?php echo $pag->getMais(); ?>
             </p>
             <span class="bb2"></span>

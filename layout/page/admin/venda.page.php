@@ -2,13 +2,14 @@
     <div>
         <h1><i class="fa fa-dollar color"></i> Vendas</h1>
         <hr />
-
+      
         <h2><?php
             if (!isset($_GET['id']))
                 echo "Registrar ";
             else
                 echo "Editar ";
             ?> venda</h2>
+        
         <form method="post">
             <?php if (isset($_GET['erro'])): ?>
                 <p class="color">
@@ -44,9 +45,9 @@
             <input type="number" value="1" name="quantidade" required placeholder="Digite a quantidade desse produto que será vendida" title="Digite a quantidade desse produto que será vendida" /><br /><br />
 
             <label for="email">E-Mail do cliente: </label><br />
-            <input type="email" value="<?php echo $c->getEmail() ?>" name="email" placeholder="Digite o E-Mail do cliente" title="Digite o E-Mail do cliente" /><br /><br />
-
-            <label for="pontos">Pontos de fidelidade: </label><br />
+            <input type="email" value="<?php echo $c->getEmail() ?>" name="email" placeholder="Digite o E-Mail do cliente" title="Digite o E-Mail do cliente" /><br />
+            <p><a href="./cliente" target="_blank" title="adicionar cliente"><i class="fa fa-plus"></i> Adicionar Cliente</a></p><br />
+            <label for="pontos">Pontos de fidelidade extras: </label><br />
             <input type="number" value="0" name="pontos" required placeholder="Digite quantos pontos serão acrescidos ao cliente" title="Digite quantos pontos serão acrescidos ao cliente" /><br /><br />
 
             <label for="idusuario"><b class="color">*</b> Vendedor: </label><br />

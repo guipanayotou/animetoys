@@ -12,7 +12,6 @@ $pag = new pagina();
 
 $pag->setid(1);
 $pag->select();
-
 if (isset($_POST['submit'])) {
     // pegar os valores do formulario, no caso o emal do cara
     $cliente = new cliente();

@@ -90,13 +90,15 @@ if (isset($_POST['submit'])) {
             }
 
 // trata os pontos
-            if ($_POST['pontos'] > 0) {
+            if ($_POST['pontos'] > 0 || $produto->getPontos() > 0) {
                 if ($cli->getId() != '') {
-                    $cli->setPontos($cli->getPontos() + $_POST['pontos']);
+                    $cli->setPontos($cli->getPontos() + $_POST['pontos'] + ($produto->getPontos() * $_POST['quantidade']));
                     $cli->update();
                 } else {
-                    header("Location: ./venda?erro=4");
-                    exit();
+                    if ($_POST['pontos'] > 0) {
+                        header("Location: ./venda?erro=4");
+                        exit();
+                    }
                 }
             }
 

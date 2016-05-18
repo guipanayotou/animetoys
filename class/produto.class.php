@@ -14,6 +14,7 @@ class produto {
     private $preco;
     private $idcategoria;
     private $estoque;
+    private $pontos;
     private $idfornecedor;
     private $ativo;
     private $img1;
@@ -90,6 +91,7 @@ class produto {
         $this->preco = mysqli_real_escape_string($link, $this->preco);
         $this->idcategoria = mysqli_real_escape_string($link, $this->idcategoria);
         $this->estoque = mysqli_real_escape_string($link, $this->estoque);
+        $this->pontos = mysqli_real_escape_string($link, $this->pontos);
         $this->idfornecedor = mysqli_real_escape_string($link, $this->idfornecedor);
         $this->ativo = mysqli_real_escape_string($link, $this->ativo);
         $this->img1 = mysqli_real_escape_string($link, $this->img1);
@@ -102,6 +104,7 @@ class produto {
 						`preco` = '$this->preco',
 						`idcategoria` = '$this->idcategoria',
 						`estoque` = '$this->estoque',
+                                                `pontos` = '$this->pontos',    
 						`idfornecedor` = '$this->idfornecedor',
 						`ativo` = '$this->ativo',
 						`img1` = '$this->img1',
@@ -136,13 +139,14 @@ class produto {
         $this->preco = mysqli_real_escape_string($link, $this->preco);
         $this->idcategoria = mysqli_real_escape_string($link, $this->idcategoria);
         $this->estoque = mysqli_real_escape_string($link, $this->estoque);
+        $this->pontos = mysqli_real_escape_string($link, $this->pontos);
         $this->idfornecedor = mysqli_real_escape_string($link, $this->idfornecedor);
         $this->ativo = mysqli_real_escape_string($link, $this->ativo);
         $this->img1 = mysqli_real_escape_string($link, $this->img1);
         $this->img2 = mysqli_real_escape_string($link, $this->img2);
         $this->img3 = mysqli_real_escape_string($link, $this->img3);
         $this->img4 = mysqli_real_escape_string($link, $this->img4);
-        $query = "INSERT INTO produto (`nome`,`descricao`,`preco`,`idcategoria`,`estoque`,`idfornecedor`,`ativo`,`img1`,`img2`,`img3`,`img4`) VALUES ('$this->nome','$this->descricao','$this->preco','$this->idcategoria','$this->estoque','$this->idfornecedor','$this->ativo','$this->img1','$this->img2','$this->img3','$this->img4');";
+        $query = "INSERT INTO produto (`nome`,`descricao`,`preco`,`idcategoria`,`estoque`,`idfornecedor`,`ativo`,`img1`,`img2`,`img3`,`img4`,`pontos`) VALUES ('$this->nome','$this->descricao','$this->preco','$this->idcategoria','$this->estoque','$this->idfornecedor','$this->ativo','$this->img1','$this->img2','$this->img3','$this->img4', '$this->pontos');";
         mysqli_query($link, $query);
         $this->id = mysqli_insert_id($link);
     }
@@ -199,6 +203,14 @@ class produto {
 
     public function getEstoque() {
         return $this->estoque;
+    }
+    public function setPontos($pontos = '') {
+        $this->pontos = $pontos;
+        return true;
+    }
+
+    public function getPontos() {
+        return $this->pontos;
     }
 
     public function setIdfornecedor($idfornecedor = '') {
