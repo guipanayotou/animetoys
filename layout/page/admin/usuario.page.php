@@ -39,7 +39,9 @@
 
                 <label for="tipo"><b class="color"></b> Tipo:</label><br />
                 <select name="tipo" required>
-                    <option <?php if ($usr->getTipo() == 1) echo "selected" ?> value="1">Administrador</option>
+                    <?php if ($logado->getTipo() == 1): ?>
+                        <option <?php if ($usr->getTipo() == 1) echo "selected"; ?>  value="1">Administrador</option>
+                    <?php endif; ?>
                     <option <?php if ($usr->getTipo() == 2) echo "selected" ?> value="2">Gerente</option>
                     <option <?php if ($usr->getTipo() == 3) echo "selected" ?> value="3" <?php if (!isset($_GET['id'])) echo 'selected' ?>>Vendedor</option>
                     <option <?php if ($usr->getTipo() == 4) echo "selected" ?> value="4">Bloqueado</option>
@@ -67,11 +69,12 @@
                     <th>Telefone</th>
                     <th>tipo</th>
                     <th>Desconto Máximo</th>
-                    <?php if ($logado->getTipo() == 1 || $logado->getTipo() == 2): ?>  <th>Editar</th> <?php endif; ?>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($usuarios as $u): ?>
+
                     <tr>
                         <td><?php echo $u->getId(); ?></td>
                         <td><?php echo $u->getUsuario(); ?></td>
@@ -95,8 +98,11 @@
                             }
                             ?></td>
                         <td><?php echo $u->getDescontomaximo() . "%"; ?></td>
-                        <?php if ($logado->getTipo() == 1 || $logado->getTipo() == 2): ?>  <td><a href="./usuario?id=<?php echo $u->getId(); ?>"><i class="fa fa-edit color"></i></a></td><?php endif; ?>
-
+                        <?php if ($logado->getTipo() == 2 && $u->getTipo() != 1): ?>
+                            <?php if ($logado->getTipo() == 1 || $logado->getTipo() == 2): ?>  <td><a href="./usuario?id=<?php echo $u->getId(); ?>"><i class="fa fa-edit color"></i></a></td><?php endif; ?>
+                                <?php else: ?>
+                            <td></td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

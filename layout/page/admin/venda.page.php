@@ -2,14 +2,14 @@
     <div>
         <h1><i class="fa fa-dollar color"></i> Vendas</h1>
         <hr />
-      
+
         <h2><?php
             if (!isset($_GET['id']))
                 echo "Registrar ";
             else
                 echo "Editar ";
             ?> venda</h2>
-        
+
         <form method="post">
             <?php if (isset($_GET['erro'])): ?>
                 <p class="color">
@@ -52,14 +52,20 @@
 
             <label for="idusuario"><b class="color">*</b> Vendedor: </label><br />
             <select name="idusuario" required title="Selecione o usuário">
-                <?php foreach ($usuarios as $p): ?>
+                <?php
+                foreach ($usuarios as $p):
+                    ?>
                     <option <?php
-                    if ($vend->getIdusuario() == $p->getId() && isset($_GET['id']))
+                    if ($vend->getIdusuario() == $p->getId() && isset($_GET['id'])) {
                         echo 'selected';
-                    if ($logado->getId() == $p->getId() && isset($_GET['id']))
-                        
-                        ?> value="<?php echo $p->getId(); ?>"><?php echo $p->getNome(); ?></option>
-                    <?php endforeach; ?>
+                    }
+                    if ($logado->getId() == $p->getId() && !isset($_GET['id'])) {
+                        echo ' selected ';
+                    }
+                    ?> value="<?php echo $p->getId(); ?>"><?php echo $p->getNome(); ?></option>
+                        <?php
+                    endforeach;
+                    ?>
             </select><br /><br />
 
             <label for="desconto">Desconto da venda (%): </label><br />
@@ -131,8 +137,13 @@
                             ?></td>
                         <td><?php echo $u->getDesconto(); ?>%</td>
                         <td><?php echo date("d/m/Y - H:i", strtotime($u->getData())); ?></td>
+                        <?php if($logado->getTipo() == 1 || $logado->getTipo() == 2): ?>
                         <td><a href="./venda?id=<?php echo $u->getId(); ?>"><i class="fa fa-edit color"></i></a></td>
                         <td><a href="./venda?excluir=<?php echo $u->getId(); ?>"><i class="fa fa-remove color"></i></a></td>
+                        <?php else: ?>
+                        <td></td>
+                        <td></td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
