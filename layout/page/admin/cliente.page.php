@@ -14,13 +14,13 @@
             <input type="text" autofocus value="<?php echo $cli->getNome(); ?>" name="nome" required placeholder="Digite o nome do cliente" title="Digite o nome do cliente" /><br /><br />
 
             <label for="tel">Telefone: </label><br />
-            <input type="tel" value="<?php echo $cli->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do cliente" title="Digite o telefone do cliente" /><br /><br />
+            <input type="tel" id="telefone" value="<?php echo $cli->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do cliente" title="Digite o telefone do cliente" /><br /><br />
 
             <label for="E-Mail"><b class="color">*</b> E-Mail:</label><br />
             <input type="email" required value="<?php echo $cli->getEmail(); ?>" name="email" placeholder="Digite o E-Mail do cliente" title='Digite o E-Mail do cliente' /><br /><br />
 
             <label for="cpf">CPF:</label><br />
-            <input type="text" value="<?php if($cli->getEmail() != '') echo substr($cli->getCpf(), 0, 3) . "." . substr($cli->getCpf(), 3, 3) . "." . substr($cli->getCpf(), 6, 3) . "-" . substr($cli->getCpf(), 9, 2); ?>" name="cpf" placeholder="Digite o CPF do cliente" title='Digite o CPF do cliente' /><br /><br />
+            <input type="text" id="cpf" value="<?php if($cli->getEmail() != '') echo substr($cli->getCpf(), 0, 3) . "." . substr($cli->getCpf(), 3, 3) . "." . substr($cli->getCpf(), 6, 3) . "-" . substr($cli->getCpf(), 9, 2); ?>" name="cpf" placeholder="Digite o CPF do cliente" title='Digite o CPF do cliente' /><br /><br />
 
             <label for="endereco">Endereço:</label><br />
             <input type="text" value="<?php echo $cli->getEndereco(); ?>" name="endereco" placeholder="Digite o endereço do cliente" title='Digite o endereço do cliente' /><br /><br />

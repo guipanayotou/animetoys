@@ -14,7 +14,7 @@
             <input type="text" autofocus value="<?php echo $forn->getNome(); ?>" name="nome" required placeholder="Digite o nome do fornecedor" title="Digite o nome do fornecedor" /><br /><br />
 
             <label for="tel">Telefone: </label><br />
-            <input type="tel" value="<?php echo $forn->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do fornecedor" title="Digite o telefone do fornecedor" /><br /><br />
+            <input type="tel" id="telefone" value="<?php echo $forn->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do fornecedor" title="Digite o telefone do fornecedor" /><br /><br />
 
             <label for="email">E-Mail:</label><br />
             <input type="email" value="<?php echo $forn->getEmail(); ?>" name="email" placeholder="Digite o E-Mail do fornecedor" title='Digite o E-Mail do fornecedor' /><br /><br />

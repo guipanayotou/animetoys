@@ -29,7 +29,7 @@
                 <input type="password" <?php if (!isset($_GET['id'])) echo 'required'; ?> name="senha" placeholder="Digite o telefone do usuário" title="Digite o telefone do usuário" /><br /><br />
 
                 <label for="tel">Telefone: </label><br />
-                <input type="tel" value="<?php echo $usr->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do usuário" title="Digite o telefone do usuário" /><br /><br />
+                <input type="tel" id="telefone" value="<?php echo $usr->getTelefone(); ?>" name="telefone" placeholder="Digite o telefone do usuário" title="Digite o telefone do usuário" /><br /><br />
 
                 <label for="email">E-Mail</label><br />
                 <input type="email" value="<?php echo $usr->getEmail(); ?>" name="email" placeholder="Digite o E-Mail do usuário" title='Digite o E-Mail do usuário' /><br /><br />

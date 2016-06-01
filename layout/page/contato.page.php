@@ -13,7 +13,7 @@
                 <input type="text" name="nome" required placeholder="Digite seu nome" title="Digite seu nome" /><br /><br />
 
                 <label for="tel">Telefone: </label><br />
-                <input type="tel" name="telefone" placeholder="Digite seu telefone" title="Digite seu telefone" /><br /><br />
+                <input type="tel"id="telefone" name="telefone" placeholder="Digite seu telefone" title="Digite seu telefone" /><br /><br />
 
                 <label for="E-Mail"><b class="color">*</b> E-Mail</label><br />
                 <input type="email" name="email" required placeholder="Digite seu E-Mail" title="digite seu E-Mail" /><br /><br />
